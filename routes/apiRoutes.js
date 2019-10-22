@@ -6,10 +6,6 @@ module.exports = function(app) {
     res.json(index);
   });
 
-  app.get("/api/notes", function(req, res) {
-    res.json(notes);
-  });
-
   app.post("/api/index", function(req, res) {
     if (index.length < 5) {
       index.push(req.body);
