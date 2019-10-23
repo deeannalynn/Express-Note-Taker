@@ -42,7 +42,7 @@
                             <input type="text" class="form-control note-title">
                           </div>
                           <div class="form-group">
-                            <label for="note-textarea">Note</label>
+                            <label for="note-textarea">Description</label>
                             <input type="textarea" class="form-control note-textarea">
                           </div>
                           <button type="submit" class="btn btn-primary submit">Save</button>
@@ -56,8 +56,6 @@
   <script type="text/javascript">
   $(".submit").on("click", function(event) {
     event.preventDefault();
-
-    // Here we grab the form elements
     var noteSubmission = {
       title: $(".note-title").val().trim(),
       text: $(".note-textarea").val().trim(),
@@ -65,16 +63,12 @@
 
     console.log(noteSubmission);
 
-
     $.post("/api/notes", noteSubmission,
       function(data) {
+        // if (data) {
+        //   alert("You saved a new note.");
+        // }
 
-        // If a table is available... tell user they are booked.
-        if (data) {
-          alert("You saved a new note.");
-        }
-
-        // Clear the form when submitting
         $(".note-title").val("");
         $(".note-textarea").val("");
       });
